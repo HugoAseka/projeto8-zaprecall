@@ -4,7 +4,8 @@ import Wellcome from "./Wellcome";
 import Answers from "./Answers";
 import QuestionScreen1 from "./QuestionScreen1";
 import Test from "./Test";
-
+import "./style.css"
+import Footer from "./Footer";
 export default function App(){
 
     
@@ -17,6 +18,7 @@ export default function App(){
     return(
         <>
           { firstternary === 'screen1' ? <Wellcome firstternary={firstternary} ToQuestion={ToQuestion}/> : <QuestionScreen1/>}  
+          { firstternary !== 'screen1' ? <Footer /> : ""}
         </>
     )
 }

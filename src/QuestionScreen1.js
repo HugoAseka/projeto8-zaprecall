@@ -11,13 +11,11 @@ export default function QuestionScreen1() {
   }
 
   function ShowAnswer(index) {
-      console.log(cardArr)
-      console.log(index)
-      console.log(cardArr[index])
     cardArr[index].front = 'answer';
     setCardArr([...cardArr]);
   }
 
+  
   function Frontface({ index }) {
     return (
       <div className="question-front">
@@ -82,6 +80,19 @@ export default function QuestionScreen1() {
     },
   ]);
 
+
+
+  let [contador, setContador] = React.useState(0);
+  if(contador === 0){
+    cardArr.sort(comparador);
+    setContador( contador = contador +1)
+  }
+  function comparador() { 
+    return Math.random() - 0.5; 
+  } 
+
+
+
   return (
     <div className="question-container">
       <div className="header">
@@ -99,15 +110,7 @@ export default function QuestionScreen1() {
             answer = {arr.answer}
        />  )}
 
-
-      {/* {cardArr.map((arr, index) =>
-        arr.front ? (
-          <Frontface cardstate={arr.front} index={index} />
-        ) : (
-          <Backface question={arr.question} />
-        )
-      )} */}
-      {/* {cardArr.map((arr,index) => <Answers answer={arr.answer}/>)} */}
+       
     </div>
   );
 }
