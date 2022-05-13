@@ -1,12 +1,17 @@
+import react from "react"
 
 function Footeremoji(){
+
+    const [emoji, setEmoji] = react.useState("./recursos/party.png")
+    const [lasttext, setLasttext] = react.useState("Você não esqueceu de nenhum flashcard!")
+
     return(
         <>
             <div className="footer-emoji">
-                <img src="./recursos/party.png"/>
+                <img  src={emoji}/>
                 <span>Parabéns!</span>
             </div>
-            <div> Você não esqueceu de nenhum flashcard!</div>
+            <div> {lasttext}</div>
         </>
     )
 }
@@ -14,14 +19,14 @@ function Footeremoji(){
 
 export default function Footer(){
 
-
-
+    
+    
 
 
 
     return(
         <footer>
-            <Footeremoji/>
+            <Footeremoji />
             
             <div> 0/7 CONCLÚIDOS</div>
             <div className="check-icons">

@@ -1,11 +1,11 @@
-export default function Answers({answer}){
+export default function Answers({answer,correct,index,setwrong,setalmost}){
     return(
         <div className="question-back">
             <span>{answer}</span>
             <div className="answers">
-                <div>Não lembrei</div>
-                <div>Quase não lembrei</div>
-                <div>Zap!</div>
+                <div onClick={() => setwrong(index)}>Não lembrei</div>
+                <div onClick={() => setalmost(index)}>Quase não lembrei</div>
+                <div onClick={() => correct(index)}>Zap!</div>
             </div>
         </div>
     );

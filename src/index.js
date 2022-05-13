@@ -18,7 +18,7 @@ export default function App(){
     return(
         <>
           { firstternary === 'screen1' ? <Wellcome firstternary={firstternary} ToQuestion={ToQuestion}/> : <QuestionScreen1/>}  
-          { firstternary !== 'screen1' ? <Footer /> : ""}
+          {/* { firstternary !== 'screen1' ? <Footer /> : ""} */}
         </>
     )
 }

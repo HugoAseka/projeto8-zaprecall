@@ -43,6 +43,7 @@ html,body{
     width: 60%;
     height: 50px;
     color: #D70900;
+    cursor: pointer;
 }
 
 
@@ -55,6 +56,18 @@ html,body{
     justify-content: space-between;
     gap: 30px;
     margin-bottom: 100px;
+}
+.correct{
+    text-decoration: line-through;
+    color: #2FBE34;
+}
+.wrong{
+    text-decoration: line-through;
+    color: red;
+}
+.almost{
+    text-decoration: line-through;
+    color: #FF922E;
 }
 .header {
     padding-top: 50px;

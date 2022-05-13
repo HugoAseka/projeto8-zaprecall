@@ -15,7 +15,20 @@ export default function QuestionScreen1() {
     setCardArr([...cardArr]);
   }
 
-  
+  function correct(index){
+    cardArr[index].front = 'correct'
+    setCardArr([...cardArr])
+  }
+
+  function setwrong(index){
+    cardArr[index].front = 'wrong'
+    setCardArr([...cardArr])
+  }
+  function setalmost(index){
+    cardArr[index].front = 'almost'
+    setCardArr([...cardArr])
+  }
+
   function Frontface({ index }) {
     return (
       <div className="question-front">
@@ -36,6 +49,32 @@ export default function QuestionScreen1() {
       </div>
     );
   }
+
+  function ShowCorrect({ index }) {
+    return (
+      <div className="question-front correct">
+        <span>Pergunta {index + 1}</span>
+        <span className="checkmark"><ion-icon name="checkmark-circle"></ion-icon></span>
+      </div>
+    );
+  }
+  function ShowWrong({ index }) {
+    return (
+      <div className="question-front wrong">
+        <span>Pergunta {index + 1}</span>
+        <span className="close-circle"><ion-icon  name="close-circle"></ion-icon></span>
+      </div>
+    );
+  }
+  function ShowAlmost({ index }) {
+    return (
+      <div className="question-front almost">
+        <span>Pergunta {index + 1}</span>
+        <span className= "help-circle"><ion-icon  name="help-circle"></ion-icon></span>
+      </div>
+    );
+  }
+
 
   const [cardArr, setCardArr] = React.useState([
     {
@@ -108,6 +147,13 @@ export default function QuestionScreen1() {
             Backface={Backface}
             Answers={Answers}
             answer = {arr.answer}
+            correct = {correct}
+            ShowCorrect = {ShowCorrect}
+            setwrong ={setwrong}
+            ShowWrong ={ShowWrong}
+            setalmost={setalmost}
+            ShowAlmost={ShowAlmost}
+            
        />  )}
 
        
