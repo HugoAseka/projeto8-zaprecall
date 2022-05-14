@@ -1,39 +1,47 @@
-import react from "react"
+import react from "react";
 
-function Footeremoji(){
+function Footeremoji({ numQuestions, notZap }) {
+  const [emoji, setEmoji] = react.useState("./recursos/party.png");
+  const [lasttext, setLasttext] = react.useState(
+    "Você não esqueceu de nenhum flashcard!"
+  );
 
-    const [emoji, setEmoji] = react.useState("./recursos/party.png")
-    const [lasttext, setLasttext] = react.useState("Você não esqueceu de nenhum flashcard!")
-
-    return(
-        <>
-            <div className="footer-emoji">
-                <img  src={emoji}/>
-                <span>Parabéns!</span>
-            </div>
-            <div> {lasttext}</div>
-        </>
-    )
+  if (numQuestions === 8 && notZap === 0) {
+    return (
+      <>
+        <div className="footer-emoji">
+          <img src={emoji} />
+          <span>Parabéns!</span>
+        </div>
+        <div> {lasttext}</div>
+      </>
+    );
+  } else if (numQuestions === 8 && notZap > 0) {
+    return (
+      <>
+        <div className="footer-emoji">
+          <img src="./recursos/sad.png" />
+          <span>Putz...</span>
+        </div>
+        <div> Ainda faltam alguns... Mas não desanime!</div>
+      </>
+    );
+  } else return ""
 }
 
+export default function Footer({ arrEmojis, numQuestions, notZap }) {
+  return (
+    <footer>
+      <Footeremoji numQuestions={numQuestions} notZap={notZap} />
 
-export default function Footer(){
-
-    
-    
-
-
-
-    return(
-        <footer>
-            <Footeremoji />
-            
-            <div> 0/7 CONCLÚIDOS</div>
-            <div className="check-icons">
-                <span className="checkmark"><ion-icon name="checkmark-circle"></ion-icon></span>
-                <span className= "help-circle"><ion-icon  name="help-circle"></ion-icon></span>
-                <span className="close-circle"><ion-icon  name="close-circle"></ion-icon></span>
-            </div>
-        </footer>
-    )
+      <div> {numQuestions}/8 CONCLÚIDOS</div>
+      <div className="check-icons">
+        {arrEmojis.map((arr) => (
+          <span className={arr}>
+            <ion-icon name={arr}></ion-icon>
+          </span>
+        ))}
+      </div>
+    </footer>
+  );
 }
