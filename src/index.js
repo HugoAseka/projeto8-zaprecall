@@ -17,25 +17,32 @@ export default function App() {
   function updateEmojis(parameter) {
     setArrEmojis([...arrEmojis, parameter]);
   }
-  let [numQuestions, setNumQuestions] = React.useState(0)
-  let [notZap, setNotZap] = React.useState(0)
-  function updateNumQuestions(p){
-      setNumQuestions(numQuestions = numQuestions + 1);
-      if( p !== "correct") setNotZap(notZap = notZap + 1)
+  let [numQuestions, setNumQuestions] = React.useState(0);
+  let [notZap, setNotZap] = React.useState(0);
+  function updateNumQuestions(p) {
+    setNumQuestions((numQuestions = numQuestions + 1));
+    if (p !== "correct") setNotZap((notZap = notZap + 1));
   }
 
   return (
     <>
       {firstternary === "screen1" ? (
-        <Wellcome
-          firstternary={firstternary}
-          ToQuestion={ToQuestion}
-          
+        <Wellcome firstternary={firstternary} ToQuestion={ToQuestion} />
+      ) : (
+        <QuestionScreen1
+          updateEmojis={updateEmojis}
+          updateNumQuestions={updateNumQuestions}
+        />
+      )}
+      {firstternary !== "screen1" ? (
+        <Footer
+          arrEmojis={arrEmojis}
+          numQuestions={numQuestions}
+          notZap={notZap}
         />
       ) : (
-        <QuestionScreen1 updateEmojis={updateEmojis} updateNumQuestions={updateNumQuestions}/>
+        ""
       )}
-      {firstternary !== "screen1" ? <Footer arrEmojis={arrEmojis} numQuestions={numQuestions} notZap={notZap} /> : ""}
     </>
   );
 }

@@ -26,7 +26,7 @@ function Footeremoji({ numQuestions, notZap }) {
         <div> Ainda faltam alguns... Mas não desanime!</div>
       </>
     );
-  } else return ""
+  } else return "";
 }
 
 export default function Footer({ arrEmojis, numQuestions, notZap }) {
