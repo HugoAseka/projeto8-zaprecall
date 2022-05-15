@@ -8,6 +8,9 @@ import Footer from "./Footer";
 function App() {
   let [firstternary, setFirstternary] = React.useState("screen1");
 
+
+
+
   function ToQuestion() {
     
     if( isNaN(zapGoal) ){
@@ -21,6 +24,7 @@ function App() {
   }
 
   const [arrEmojis, setArrEmojis] = React.useState([]);
+
   function updateEmojis(parameter) {
     setArrEmojis([...arrEmojis, parameter]);
   }
@@ -44,7 +48,6 @@ function App() {
     <>
       {firstternary === "screen1" ? (
         <Wellcome
-          firstternary={firstternary}
           ToQuestion={ToQuestion}
           getInputValue={getInputValue}
         />

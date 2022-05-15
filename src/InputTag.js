@@ -1,9 +1,14 @@
 
 
-export default function InputTag({getInputValue}){
+export default function InputTag({getInputValue,ToQuestion}){
 
-
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+          ToQuestion();
+        }
+      }
+    
     return (
-        <input type="text" placeholder="Digite sua meta de zaps..." onChange={getInputValue} />
+        <input onKeyPress={handleKeyPress} type="text" placeholder="Digite sua meta de zaps..." onChange={getInputValue} />
     );
 }
