@@ -1,12 +1,12 @@
 import react from "react";
 
-function Footeremoji({ numQuestions, notZap }) {
+function Footeremoji({ numQuestions, notZap, zapGoal }) {
   const [emoji, setEmoji] = react.useState("./recursos/party.png");
   const [lasttext, setLasttext] = react.useState(
     "Você não esqueceu de nenhum flashcard!"
   );
-
-  if (numQuestions === 8 && notZap === 0) {
+  let Zap = 8 - notZap;
+  if (numQuestions === 8 && Zap >= zapGoal) {
     return (
       <>
         <div className="footer-emoji">
@@ -16,7 +16,7 @@ function Footeremoji({ numQuestions, notZap }) {
         <div> {lasttext}</div>
       </>
     );
-  } else if (numQuestions === 8 && notZap > 0) {
+  } else if (numQuestions === 8 && Zap < zapGoal) {
     return (
       <>
         <div className="footer-emoji">
@@ -30,19 +30,23 @@ function Footeremoji({ numQuestions, notZap }) {
 }
 
 function ReloadZap({ numQuestions }) {
-  if (numQuestions === 8 )
-    return <div onClick={() => window.location.reload()} className="reload-zap">REINICIAR RECALL</div>;
+  if (numQuestions === 8)
+    return (
+      <div onClick={() => window.location.reload()} className="reload-zap">
+        REINICIAR RECALL
+      </div>
+    );
   else return "";
 }
 
-export default function Footer({ arrEmojis, numQuestions, notZap }) {
+export default function Footer({ arrEmojis, numQuestions, notZap, zapGoal }) {
   return (
     <footer>
-      <Footeremoji numQuestions={numQuestions} notZap={notZap} />
+      <Footeremoji numQuestions={numQuestions} notZap={notZap} zapGoal={zapGoal} />
 
-      <div onClick={() => window.location.reload()}>
-        {" "}
-        {numQuestions}/8 CONCLÚIDOS
+      <div>
+        
+        {numQuestions}/8 CONCLÚIDOS 
       </div>
       <div className="check-icons">
         {arrEmojis.map((arr) => (

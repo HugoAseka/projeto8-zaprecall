@@ -6,9 +6,17 @@ import "./style.css";
 import Footer from "./Footer";
 
 function App() {
-  const [firstternary, setFirstternary] = React.useState("screen1");
+  let [firstternary, setFirstternary] = React.useState("screen1");
 
-  function ToQuestion(firstternary) {
+  function ToQuestion() {
+    
+    if( isNaN(zapGoal) ){
+      alert("Meta precisa ser um número!");
+      return;
+    }else if( zapGoal < 1 || zapGoal > 8){
+      alert("Meta precisa ser entre 1 e 8 flashcards!");
+      return;
+    }
     setFirstternary((firstternary = "screen2"));
   }
 
@@ -16,17 +24,30 @@ function App() {
   function updateEmojis(parameter) {
     setArrEmojis([...arrEmojis, parameter]);
   }
+
   let [numQuestions, setNumQuestions] = React.useState(0);
   let [notZap, setNotZap] = React.useState(0);
+
   function updateNumQuestions(p) {
     setNumQuestions((numQuestions = numQuestions + 1));
     if (p !== "correct") setNotZap((notZap = notZap + 1));
   }
 
+  let [zapGoal, SetZapGoal] = React.useState(0);
+
+  const getInputValue = (event) => {
+    SetZapGoal(Number(event.target.value));
+    
+  };
+
   return (
     <>
       {firstternary === "screen1" ? (
-        <Wellcome firstternary={firstternary} ToQuestion={ToQuestion} />
+        <Wellcome
+          firstternary={firstternary}
+          ToQuestion={ToQuestion}
+          getInputValue={getInputValue}
+        />
       ) : (
         <QuestionScreen1
           updateEmojis={updateEmojis}
@@ -38,6 +59,7 @@ function App() {
           arrEmojis={arrEmojis}
           numQuestions={numQuestions}
           notZap={notZap}
+          zapGoal={zapGoal}
         />
       ) : (
         ""
