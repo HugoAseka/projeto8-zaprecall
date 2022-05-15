@@ -29,12 +29,21 @@ function Footeremoji({ numQuestions, notZap }) {
   } else return "";
 }
 
+function ReloadZap({ numQuestions }) {
+  if (numQuestions === 8 )
+    return <div onClick={() => window.location.reload()} className="reload-zap">REINICIAR RECALL</div>;
+  else return "";
+}
+
 export default function Footer({ arrEmojis, numQuestions, notZap }) {
   return (
     <footer>
       <Footeremoji numQuestions={numQuestions} notZap={notZap} />
 
-      <div> {numQuestions}/8 CONCLÚIDOS</div>
+      <div onClick={() => window.location.reload()}>
+        {" "}
+        {numQuestions}/8 CONCLÚIDOS
+      </div>
       <div className="check-icons">
         {arrEmojis.map((arr) => (
           <span className={arr}>
@@ -42,6 +51,8 @@ export default function Footer({ arrEmojis, numQuestions, notZap }) {
           </span>
         ))}
       </div>
+
+      <ReloadZap numQuestions={numQuestions} />
     </footer>
   );
 }

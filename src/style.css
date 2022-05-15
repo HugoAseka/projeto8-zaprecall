@@ -200,3 +200,10 @@ footer div {
 .close-circle {
   color: #ff3030;
 }
+.reload-zap{
+  background-color: #FB6B6B;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
