@@ -1,7 +1,7 @@
 import reactDom from "react-dom";
 import React from "react";
 import Wellcome from "./Wellcome";
-import QuestionScreen1 from "./QuestionScreen1";
+import QuestionScreen from "./QuestionScreen";
 import "./style.css";
 import Footer from "./Footer";
 
@@ -23,7 +23,7 @@ function App() {
           setZapGoal={setZapGoal}
         />
       ) : (
-        <QuestionScreen1
+        <QuestionScreen
           setArrEmojis={setArrEmojis}
           arrEmojis={arrEmojis}
           setNotZap={setNotZap}

@@ -3,7 +3,7 @@ export default function Test({
   front,
   index,
   question,
-  Frontface,
+  turncard,
   Backface,
   Answers,
   answer,
@@ -14,6 +14,24 @@ export default function Test({
   setalmost,
   ShowAlmost,
 }) {
+
+  
+
+  function Frontface({ index }) {
+    return (
+      <div className="question-front">
+        <span>Pergunta {index + 1}</span>
+        <ion-icon
+          onClick={() => turncard(index)}
+          name="play-outline"
+        ></ion-icon>
+      </div>
+    );
+  }
+
+
+
+
   if (front === "initial") {
     return (
       <>
@@ -22,7 +40,7 @@ export default function Test({
     );
   } else if (front === "question") {
     return (
-      <>
+      <>  
         <Backface question={question} index={index} />
       </>
     );

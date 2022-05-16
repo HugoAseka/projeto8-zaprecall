@@ -2,7 +2,7 @@ import React from "react";
 import Answers from "./Answers";
 import Test from "./Test";
 
-export default function QuestionScreen1({
+export default function QuestionScreen({
   setArrEmojis,
   arrEmojis,
   updateNumQuestions,
@@ -11,7 +11,7 @@ export default function QuestionScreen1({
   setNotZap,
   notZap,
 }) {
-  function Turncard(index) {
+  function turncard(index) {
     cardArr[index].front = "question";
     setCardArr([...cardArr]);
   }
@@ -52,17 +52,7 @@ export default function QuestionScreen1({
     updateNumQuestions(p);
   }
 
-  function Frontface({ index }) {
-    return (
-      <div className="question-front">
-        <span>Pergunta {index + 1}</span>
-        <ion-icon
-          onClick={() => Turncard(index)}
-          name="play-outline"
-        ></ion-icon>
-      </div>
-    );
-  }
+  
   function Backface({ question, index }) {
     return (
       <div className="question-back">
@@ -168,7 +158,7 @@ export default function QuestionScreen1({
           front={arr.front}
           index={index}
           question={arr.question}
-          Frontface={Frontface}
+          turncard={turncard}
           Backface={Backface}
           Answers={Answers}
           answer={arr.answer}
