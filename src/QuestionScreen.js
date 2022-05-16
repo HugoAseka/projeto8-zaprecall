@@ -5,7 +5,6 @@ import Test from "./Test";
 export default function QuestionScreen({
   setArrEmojis,
   arrEmojis,
-  updateNumQuestions,
   setNumQuestions,
   numQuestions,
   setNotZap,
@@ -52,12 +51,15 @@ export default function QuestionScreen({
     updateNumQuestions(p);
   }
 
-  
   function Backface({ question, index }) {
     return (
       <div className="question-back">
         <span>{question}</span>
-        <img onClick={() => ShowAnswer(index)} src="./recursos/setinha.png" />
+        <img
+          onClick={() => ShowAnswer(index)}
+          src="./recursos/setinha.png"
+          alt="flip card"
+        />
       </div>
     );
   }
@@ -149,13 +151,14 @@ export default function QuestionScreen({
   return (
     <div className="question-container">
       <div className="header">
-        <img src="./recursos/logo-pequeno.png" />
+        <img src="./recursos/logo-pequeno.png" alt="logo" />
         <span>ZapRecall</span>
       </div>
 
       {cardArr.map((arr, index) => (
         <Test
           front={arr.front}
+          key={index}
           index={index}
           question={arr.question}
           turncard={turncard}

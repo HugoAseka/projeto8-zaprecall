@@ -4,12 +4,11 @@ export default function Wellcome({
   setFirstternary,
   zapGoal,
   getInputValue,
-  setZapGoal
+  setZapGoal,
 }) {
-
-  function ToQuestion(){
+  function ToQuestion() {
     if (isNaN(zapGoal)) {
-      console.log(zapGoal)
+      console.log(zapGoal);
       alert("Meta precisa ser um número!");
       return;
     } else if (zapGoal < 1 || zapGoal > 8) {
@@ -21,8 +20,10 @@ export default function Wellcome({
 
   return (
     <div className="wellcome-container">
-      <img src="./recursos/logo.png" />
-      <p>ZapRecall</p>
+      <div className="logo-container">
+        <img src="./recursos/logo.png" alt="logo" />
+        <p>ZapRecall</p>
+      </div>
       <InputTag ToQuestion={ToQuestion} setZapGoal={setZapGoal} />
       <button
         onClick={() => {

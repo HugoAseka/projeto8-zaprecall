@@ -14,9 +14,6 @@ export default function Test({
   setalmost,
   ShowAlmost,
 }) {
-
-  
-
   function Frontface({ index }) {
     return (
       <div className="question-front">
@@ -29,9 +26,6 @@ export default function Test({
     );
   }
 
-
-
-
   if (front === "initial") {
     return (
       <>
@@ -40,7 +34,7 @@ export default function Test({
     );
   } else if (front === "question") {
     return (
-      <>  
+      <>
         <Backface question={question} index={index} />
       </>
     );

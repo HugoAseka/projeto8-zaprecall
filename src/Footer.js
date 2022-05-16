@@ -1,26 +1,20 @@
-import react from "react";
-
 function Footeremoji({ numQuestions, notZap, zapGoal }) {
-  const [emoji, setEmoji] = react.useState("./recursos/party.png");
-  const [lasttext, setLasttext] = react.useState(
-    "Você não esqueceu de nenhum flashcard!"
-  );
   let Zap = 8 - notZap;
   if (numQuestions === 8 && Zap >= zapGoal) {
     return (
       <>
         <div className="footer-emoji">
-          <img src={emoji} />
+          <img src="./recursos/party.png" alt="Emoji de Parabéns!!" />
           <span>Parabéns!</span>
         </div>
-        <div> {lasttext}</div>
+        <div> "Você não esqueceu de nenhum flashcard!"</div>
       </>
     );
   } else if (numQuestions === 8 && Zap < zapGoal) {
     return (
       <>
         <div className="footer-emoji">
-          <img src="./recursos/sad.png" />
+          <img src="./recursos/sad.png" alt="Emoji Triste" />
           <span>Putz...</span>
         </div>
         <div> Ainda faltam alguns... Mas não desanime!</div>
@@ -42,15 +36,16 @@ function ReloadZap({ numQuestions }) {
 export default function Footer({ arrEmojis, numQuestions, notZap, zapGoal }) {
   return (
     <footer>
-      <Footeremoji numQuestions={numQuestions} notZap={notZap} zapGoal={zapGoal} />
+      <Footeremoji
+        numQuestions={numQuestions}
+        notZap={notZap}
+        zapGoal={zapGoal}
+      />
 
-      <div>
-        
-        {numQuestions}/8 CONCLÚIDOS 
-      </div>
+      <div>{numQuestions}/8 CONCLÚIDOS</div>
       <div className="check-icons">
-        {arrEmojis.map((arr) => (
-          <span className={arr}>
+        {arrEmojis.map((arr, index) => (
+          <span key={index} className={arr}>
             <ion-icon name={arr}></ion-icon>
           </span>
         ))}

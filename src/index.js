@@ -12,8 +12,6 @@ function App() {
   let [notZap, setNotZap] = React.useState(0);
   let [zapGoal, setZapGoal] = React.useState(0);
 
-  
-
   return (
     <>
       {firstternary === "screen1" ? (
