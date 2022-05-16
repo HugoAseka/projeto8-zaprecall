@@ -2,7 +2,15 @@ import React from "react";
 import Answers from "./Answers";
 import Test from "./Test";
 
-export default function QuestionScreen1({ updateEmojis, updateNumQuestions }) {
+export default function QuestionScreen1({
+  setArrEmojis,
+  arrEmojis,
+  updateNumQuestions,
+  setNumQuestions,
+  numQuestions,
+  setNotZap,
+  notZap,
+}) {
   function Turncard(index) {
     cardArr[index].front = "question";
     setCardArr([...cardArr]);
@@ -11,6 +19,14 @@ export default function QuestionScreen1({ updateEmojis, updateNumQuestions }) {
   function ShowAnswer(index) {
     cardArr[index].front = "answer";
     setCardArr([...cardArr]);
+  }
+
+  function updateEmojis(parameter) {
+    setArrEmojis([...arrEmojis, parameter]);
+  }
+  function updateNumQuestions(p) {
+    setNumQuestions((numQuestions = numQuestions + 1));
+    if (p !== "correct") setNotZap((notZap = notZap + 1));
   }
 
   function correct(index) {
